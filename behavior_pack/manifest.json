@@ -2,7 +2,7 @@
 	"format_version": 2,
 	"header": {
 		"name": "§l§fWorld Edit§e++§r",
-		"description": "A new \"World Map Editor\" for Minecraft!!\n§7©Apedy tech",
+		"description": "A new \"World Map Editor\" for Minecraft Bedrock!!\n§7©Apedy tech",
 		"uuid": "c9e93252-2aaa-2281-6911-338a1c8cd9fe",
 		"version": [1, 0, 0],
 		"min_engine_version": [1, 19, 60]
