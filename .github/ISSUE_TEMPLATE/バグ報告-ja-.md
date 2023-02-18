@@ -1,6 +1,6 @@
 ---
 name: バグ報告(JA)
-about: "○○に問題があります。"
+about: "○○に問題がある。"
 title: ''
 labels: 'Problem: bug'
 assignees: Apedy
