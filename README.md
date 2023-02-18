@@ -1,22 +1,35 @@
 **日本語** / English
 # <img src="./behavior_pack/pack_icon.png" width=""> World Edit <a href="https://github.com/Apedy/WorldEdit/releases/"><img src="https://badgen.net/github/release/Apedy/WorldEdit"></a>
-A new "World Map Editor" for Minecraft Bedrock!!
+### - Description
+> A new "World Map Editor Addon" for Minecraft Bedrock!!<br>
+> マインクラフト統合版に新しい "World Map Editor Addon"が登場！！
 
-# Introduction.
+### License
+World EditのLICENSEは、[***GNU General Public License v3.0***](https://github.com/Apedy/MinePaint/blob/master/LICENSE) を使用しています。
+
+# ! Notes
 World EditのLICENSEは、[***GNU General Public License v3.0***](https://github.com/Apedy/MinePaint/blob/master/LICENSE) を使用しています。
 
 ### ! Notes
-* **Mojang Studios**
-	> 1. World Editは、Minecraft非公式なものであり、これらの制作に *Mojang Sutudios*社 は関与していません。
-	> 1. そのため、World Edit Addonに関する全ての事柄を、*Mojang Sutudios*社 に問い合わせないでください。
+**Mojang Studios**
+> 1. WorldEdit++ は、Minecraft非公式なものであり、これらの制作に *Mojang Sutudios*社 は関与していません。
+> 2. WorldEdit++ に関する全ての事柄を、*Mojang Sutudios*社 に問い合わせないでください。
 
-* **EngineHub**
-	> 1. このWorld Edit Addonは *Minecraft Java Edition* 上で動作する *World-Edit* Mod, Plugin に関連したものではなく、これらの制作に *EngineHub*コミュニティ は関与していません。
-	> 1. そのため、World Edit Addonに関する全ての事柄を、*EngineHub*コミュニティ に問い合わせないでください。
+**EngineHub**
+> 1. WorldEdit++ は *Minecraft Java Edition* 上で動作する *WorldEdit* Mod, Plugin に関連したものではなく、これらの制作に *EngineHub*コミュニティ は関与していません。
+> 1. WorldEdit++ に関する全ての事柄を、*EngineHub*コミュニティ に問い合わせないでください。
 
 ### - Info
 * アドオンが正常に動かないと思われる場合は、[***Issues***](https://github.com/Apedy/MinePaint/issues) へ飛び、それに関連するタグをつけて問題を報告してください。
 
-# FAQ
-* ### Q. アドオンを入れても何も起きません。
-	> 1. ワールド設定で実験項目の **Beta-API** をオンにしてください。
+# ? FAQ
+**Q. アドオンを入れても何も起きません。**
+> ワールド設定で実験項目の **Beta-API** をオンにしてください。
+<br>
+
+**Q. FAQの内容を行っても何かしらの問題が発生します。**
+> その原因が分からない場合
+> ➔ [***Issues***(質問)](https://github.com/Apedy/WorldEdit/issues/new?assignees=Apedy&labels=Feedback%3A+question&template=%E8%B3%AA%E5%95%8F-ja-.md&title=) へ行き、詳細を記述して送信してください。
+> 
+> その原因を把握している場合↓
+> ➔ [***Issues***(バグ報告)](https://github.com/Apedy/WorldEdit/issues/new?assignees=Apedy&labels=Category%3A+script%2C+Problem%3A+bug&template=%E3%83%90%E3%82%B0%E5%A0%B1%E5%91%8A-ja-.md&title=) へ行き、詳細を記述して送信してください。
