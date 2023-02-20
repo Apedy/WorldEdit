@@ -18,10 +18,16 @@
 
 # ? FAQ
 ### Q. アドオンを入れても何も起きません。
-> ワールド設定で実験項目の **Beta-API** をオンにしてください。
+> ワールド設定で実験項目の **Beta-API** をオンになっていることを確認してください。
+<br>
+
+### Q. ERRORが出て、何も起きませんでした。
+> 動作が正常に実行されなかった可能性があります。
+>
+> 詳しくは[ErrorList](https://github.com/Apedy/WorldEdit/blob/master/ErrorList.md)を確認してください。
 <br>
 
 ### Q. FAQの内容を行っても何かしらの問題が発生します。
 > その原因が分からない場合 ➔ [***Issues***(質問)](https://github.com/Apedy/WorldEdit/issues/new?assignees=Apedy&labels=Feedback%3A+question&template=%E8%B3%AA%E5%95%8F-ja-.md&title=) へ行き、詳細を記述して送信してください。
-> 
+>
 > その原因を把握している場合 ➔ [***Issues***(バグ報告)](https://github.com/Apedy/WorldEdit/issues/new?assignees=Apedy&labels=Category%3A+script%2C+Problem%3A+bug&template=%E3%83%90%E3%82%B0%E5%A0%B1%E5%91%8A-ja-.md&title=) へ行き、詳細を記述して送信してください。
