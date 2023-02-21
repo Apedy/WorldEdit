@@ -7,7 +7,7 @@
 > マインクラフト統合版に新しい "World Map Editor Addon"が登場！！
 
 ### License
-> World EditのLICENSEは、[***GNU General Public License v3.0***](https://github.com/Apedy/MinePaint/blob/master/LICENSE) を使用しています。
+> WorldEdit++は、[***GNU General Public License v3.0***](https://github.com/Apedy/MinePaint/blob/master/LICENSE) の下で公開されています。
 
 # ! Notes
 ### Mojang Studios
