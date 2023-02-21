@@ -1,15 +1,14 @@
 **日本語** / English
 
-# <img src="./behavior_pack/pack_icon.png" width=""> World Edit <a href=""><img src="https://flat.badgen.net/badge/license/GPL-3.0/green"></a> <a href="https://github.com/Apedy/WorldEdit/releases/"><img src="https://flat.badgen.net/github/release/Apedy/WorldEdit"> <img src="https://flat.badgen.net/github/assets-dl/Apedy/MinePaint"></a>
+# WorldEdit++<img src="./behavior_pack/pack_icon.png" width=""> <a href="https://github.com/Apedy/MinePaint/blob/master/LICENSE"><img src="https://flat.badgen.net/badge/license/GPL-3.0/green"></a> <a href="https://github.com/Apedy/WorldEdit/releases/"><img src="https://flat.badgen.net/github/release/Apedy/WorldEdit"> <img src="https://flat.badgen.net/github/assets-dl/Apedy/MinePaint"></a>
 
-### Description
-> A new "World Map Editor Addon" for Minecraft Bedrock!!<br>
-> マインクラフト統合版に新しい "World Map Editor Addon"が登場！！
+**A new "World Map Editor Addon" for Minecraft Bedrock!!**<br>
+**マインクラフト統合版に新しい "World Map Editor Addon"が登場!!**
 
-### License
-> WorldEdit++は、[***GNU General Public License v3.0***](https://github.com/Apedy/MinePaint/blob/master/LICENSE) の下で公開されています。
+# - ) License
+**WorldEdit++は、[***GNU General Public License v3.0***](https://github.com/Apedy/MinePaint/blob/master/LICENSE) の下で公開されています。**
 
-# ! Notes
+# ! ) Notes
 ### Mojang Studios
 > 1. WorldEdit++ は、Minecraft非公式なものであり、これらの制作に *Mojang Sutudios*社 は関与していません。
 > 2. WorldEdit++ に関する全ての事柄を、*Mojang Sutudios*社 に問い合わせないでください。
@@ -18,7 +17,7 @@
 > 1. WorldEdit++ は *Minecraft Java Edition* 上で動作する *WorldEdit* Mod, Plugin に関連したものではなく、これらの制作に *EngineHub*コミュニティ は関与していません。
 > 1. WorldEdit++ に関する全ての事柄を、*EngineHub*コミュニティ に問い合わせないでください。
 
-# ? FAQ
+# ? ) FAQ
 ### Q. アドオンを入れても何も起きません。
 > ワールド設定で実験項目の **Beta-API** がオンになっていることを確認してください。
 <br>
