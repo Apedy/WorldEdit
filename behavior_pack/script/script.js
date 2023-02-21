@@ -1,14 +1,11 @@
 import * as mc from '@minecraft/server';
-import * as admin from './@apedy/minecraft';
+import { World } from './lib/minecraft';
+import * as worldEdit from './modules/world-edit';
 
-const edit = {
-	set: false,
-	axeTag: ["§r§dWorld Edit++"]
-};
-const spot = {
-	startLocation: null,
-	endLocation: null
-};
+const mcLib = new World("overworld");
+const Edit = worldEdit.Edit;
+
+mcLib.runCommands(mcLib.dimension, "title @a times 0 2 0");
 
 mc.world.events.beforeChat.subscribe(eventData => {
 	const { sender, message } = eventData;
@@ -17,76 +14,78 @@ mc.world.events.beforeChat.subscribe(eventData => {
 		eventData.cancel = true;
 
 		if (/wand$/.test(message)) {
-			admin.world.giveItem(sender, new mc.ItemStack(mc.MinecraftItemTypes.woodenAxe), edit.axeTag);
+			mcLib.giveItem(sender, new mc.ItemStack(mc.MinecraftItemTypes.woodenAxe), Edit.axeTag);
+
+			mcLib.runCommands(sender, "tellraw @s {\"rawtext\": [{\"text\": \"§l§6>> §fleft click: set point1§r\n§l§6>> §fright click: set point2\"}]}");
 		}
 		if (/set$/.test(message)) {
-			edit.set = true;
+			Edit.find(sender).isBlockSelectionMode = true;
 
-			admin.world.runCommands(sender, "tellraw @s {\"rawtext\": [{\"text\": \"§lblock selection mode: §bON§r\n§l§6>>§r Place the block you want to set.\"}]}");
+			mcLib.runCommands(sender, "tellraw @s {\"rawtext\": [{\"text\": \"§lblock selection mode: §bON§r\n§l§6>>§r Place the block you want to set.\"}]}");
 		}
 		if (/set\?$/.test(message)) {
-			edit.set = false;
+			Edit.find(sender).isBlockSelectionMode = false;
 
-			admin.world.runCommands(sender, "tellraw @s {\"rawtext\": [{\"text\": \"§lblock selection mode: §7OFF§r\"}]}");
+			mcLib.runCommands(sender, "tellraw @s {\"rawtext\": [{\"text\": \"§lblock selection mode: §7OFF§r\"}]}");
 		}
 		if (/place$/.test(message)) {
-			const blockId = admin.world.hasItem(sender)?.typeId || "minecraft:air";
-			edit.set = false;
+			const Item = mcLib.hasItem(sender);
+			const ItemId = Item?.typeId || "minecraft:air";
 
-			admin.world.runCommands(sender, `title @s actionbar §a[SUCCESS] §fblock: §l${blockId}`, `fill ${spot.startLocation} ${spot.endLocation} ${blockId}`);
+			worldEdit.fill(sender, Item).then(() => {
+				mcLib.runCommands(sender, `title @s actionbar §a[SUCCESS] §fFill block: §l${ItemId}`);
+			}).catch(() => {
+				mcLib.runCommands(sender, `title @s actionbar §c[ERROR] §fF-101`);
+			});
 		}
 	}
 });
 
 mc.world.events.blockBreak.subscribe(eventData => {
 	const { player, block, brokenBlockPermutation } = eventData;
-	const point = `${block.location.x} ${block.location.y} ${block.location.z}`;
 
-	if (admin.world.hasItem(player)?.typeId === mc.MinecraftItemTypes.woodenAxe.id && admin.world.hasItem(player)?.getLore().toString() === edit.axeTag.toString()) {
+	if (mcLib.hasItem(player)?.typeId === mc.MinecraftItemTypes.woodenAxe.id && mcLib.hasItem(player)?.getLore().toString() === Edit.axeTag.toString()) {
 		block.setPermutation(brokenBlockPermutation);
 
-		if (point !== spot.startLocation) {
-			spot.startLocation = point;
-			admin.world.runCommands(player, `title @s actionbar §f[LOG] Start: §l${spot.startLocation}`);
-		}
+		Edit.setPoint1(player, block.location);
 	}
 });
 
 mc.world.events.beforeItemUseOn.subscribe(eventData => {
 	const { source, blockLocation } = eventData;
-	const point = `${blockLocation.x} ${blockLocation.y} ${blockLocation.z}`;
 
-	if (admin.world.hasItem(source)?.typeId === mc.MinecraftItemTypes.woodenAxe.id && admin.world.hasItem(source)?.getLore().toString() === edit.axeTag.toString()) {
+	if (mcLib.hasItem(source)?.typeId === mc.MinecraftItemTypes.woodenAxe.id && mcLib.hasItem(source)?.getLore().toString() === Edit.axeTag.toString()) {
 		eventData.cancel = true;
 
-		if (point !== spot.endLocation) {
-			spot.endLocation = point;
-			admin.world.runCommands(source, `title @s actionbar §f[LOG] End: §l${spot.endLocation}`);
-		}
+		Edit.setPoint2(source, blockLocation);
 	}
 });
 
 mc.world.events.blockPlace.subscribe(eventData => {
 	const { player, block } = eventData;
-	const Item = admin.world.hasItem(player);
+	const Item = mcLib.hasItem(player);
+	const ItemId = Item?.typeId || "minecraft:air";
 	const blockLocation = `${block.location.x} ${block.location.y} ${block.location.z}`;
 
-	if (edit.set && spot.startLocation && spot.endLocation) {
-		admin.world.runCommands(player,
-			`title @s actionbar §a[SUCCESS] §fblock: §l${Item.typeId}`,
-			`setblock ${blockLocation} air`,
-			`fill ${spot.startLocation} ${spot.endLocation} ${Item.typeId} ${Item.data}`
-		);
+	if (Edit.find(player).isBlockSelectionMode) {
+		mcLib.runCommands(player, `setblock ${blockLocation} air`);
+
+		worldEdit.fill(player, Item).then(() => {
+			mcLib.runCommands(player, `title @s actionbar §a[SUCCESS] §fFill block: §l${ItemId}`);
+		}).catch(() => {
+			mcLib.runCommands(player, "title @s actionbar §c[ERROR] §fF-100");
+		});
 
 		if (player.isSneaking) {
-			edit.set = false;
+			Edit.find(player).isBlockSelectionMode = false;
 
-			admin.world.runCommands(player, "tellraw @s {\"rawtext\": [{\"text\": \"§lblock selection mode: §7OFF§r\"}]}");
+			mcLib.runCommands(player, "tellraw @s {\"rawtext\": [{\"text\": \"§lBlock Selection Mode: §7OFF§r\"}]}");
 		}
 	}
-	else if (edit.set) admin.world.runCommands(player, "title @s actionbar §e[WRONG] Set a point.", `setblock ${blockLocation} air`);
 });
 
 mc.system.run(function tick() {
 	mc.system.run(tick);
+
+	mcLib.getPlayerList().forEach(player => Edit.find(player)?.isBlockSelectionMode ? mcLib.runCommands(mcLib.dimension, "title @a title §fBlock Selection Mode") : null);
 });
