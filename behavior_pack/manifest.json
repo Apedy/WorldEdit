@@ -1,18 +1,18 @@
 {
 	"format_version": 2,
 	"header": {
-		"name": "§l§fWorld Edit§e++§r",
-		"description": "A new \"World Map Editor\" for Minecraft Bedrock!!\n§7©Apedy tech",
+		"name": "§l§fWorldEdit§e++§r",
+		"description": "A new \"World Map Editor Addon\" for Minecraft Bedrock!!\n§7©Apedy tech",
 		"uuid": "c9e93252-2aaa-2281-6911-338a1c8cd9fe",
-		"version": [1, 0, 0],
-		"min_engine_version": [1, 19, 60]
+		"version": [1, 0, 1],
+		"min_engine_version": [1, 19, 80]
 	},
 	"modules": [
 		{
-			"description": "MinePaintのメインエンジンです。",
+			"description": "The \"WorldEdit++\" main engine",
 			"type": "script",
 			"uuid": "988d3438-7463-4b82-f14c-c93177e19c67",
-			"version": [1, 0, 0],
+			"version": [1, 0, 1],
 			"language": "javascript",
 			"entry": "scripts/script.js"
 		}
@@ -20,7 +20,7 @@
 	"dependencies": [
 		{
 			"module_name": "@minecraft/server",
-			"version": "1.1.0-beta"
+			"version": "1.2.0-beta"
 		},
 		{
 			"module_name": "@minecraft/server-ui",
@@ -29,7 +29,7 @@
 	],
 	"metadata": {
 		"authors": ["Apedy tech"],
-		"license": "GNU General Public License",
+		"license": "GNU General Public License v3.0",
 		"url": "https://github.com/Apedy"
 	}
 }
