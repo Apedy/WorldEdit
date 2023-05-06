@@ -1,9 +1,26 @@
+/*!
+ * Copyright (C) 2023 Apedy
+ * This file is part of WorldEdit++.
+ *
+ * WorldEdit++ is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * WorldEdit++ is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this WorldEdit++. If not, see <https://www.gnu.org/licenses/>.
+ */
+
 import * as mc from '@minecraft/server';
 import { World } from './lib/minecraft';
-import * as worldEdit from './modules/world-edit';
+import { Edit, fill } from './modules/edit';
 
 const mcLib = new World("overworld");
-const Edit = worldEdit.Edit;
 
 mcLib.runCommands(mcLib.dimension, "title @a times 0 2 0");
 
@@ -14,7 +31,7 @@ mc.world.events.beforeChat.subscribe(eventData => {
 		eventData.cancel = true;
 
 		if (/wand$/.test(message)) {
-			mcLib.giveItem(sender, new mc.ItemStack(mc.MinecraftItemTypes.woodenAxe), Edit.axeTag);
+			mcLib.giveItem(sender, new mc.ItemStack(mc.MinecraftItemTypes.woodenAxe), Edit.toolTag);
 
 			mcLib.runCommands(sender, "tellraw @s {\"rawtext\": [{\"text\": \"§l§6>> §fleft click: set point1§r\n§l§6>> §fright click: set point2\"}]}");
 		}
@@ -32,7 +49,7 @@ mc.world.events.beforeChat.subscribe(eventData => {
 			const Item = mcLib.hasItem(sender);
 			const ItemId = Item?.typeId || "minecraft:air";
 
-			worldEdit.fill(sender, Item).then(() => {
+			fill(sender, Item).then(() => {
 				mcLib.runCommands(sender, `title @s actionbar §a[SUCCESS] §fFill block: §l${ItemId}`);
 			}).catch(() => {
 				mcLib.runCommands(sender, `title @s actionbar §c[ERROR] §fF-101`);
@@ -44,7 +61,7 @@ mc.world.events.beforeChat.subscribe(eventData => {
 mc.world.events.blockBreak.subscribe(eventData => {
 	const { player, block, brokenBlockPermutation } = eventData;
 
-	if (mcLib.hasItem(player)?.typeId === mc.MinecraftItemTypes.woodenAxe.id && mcLib.hasItem(player)?.getLore().toString() === Edit.axeTag.toString()) {
+	if (Edit.hasTool(player)) {
 		block.setPermutation(brokenBlockPermutation);
 
 		Edit.setPoint1(player, block.location);
@@ -52,12 +69,12 @@ mc.world.events.blockBreak.subscribe(eventData => {
 });
 
 mc.world.events.beforeItemUseOn.subscribe(eventData => {
-	const { source, blockLocation } = eventData;
+	const { source } = eventData;
 
-	if (mcLib.hasItem(source)?.typeId === mc.MinecraftItemTypes.woodenAxe.id && mcLib.hasItem(source)?.getLore().toString() === Edit.axeTag.toString()) {
+	if (Edit.hasTool(source)) {
 		eventData.cancel = true;
 
-		Edit.setPoint2(source, blockLocation);
+		Edit.setPoint2(source, source.getBlockFromViewDirection().location);
 	}
 });
 
@@ -70,7 +87,7 @@ mc.world.events.blockPlace.subscribe(eventData => {
 	if (Edit.find(player).isBlockSelectionMode) {
 		mcLib.runCommands(player, `setblock ${blockLocation} air`);
 
-		worldEdit.fill(player, Item).then(() => {
+		fill(player, Item).then(() => {
 			mcLib.runCommands(player, `title @s actionbar §a[SUCCESS] §fFill block: §l${ItemId}`);
 		}).catch(() => {
 			mcLib.runCommands(player, "title @s actionbar §c[ERROR] §fF-100");
