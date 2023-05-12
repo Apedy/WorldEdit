@@ -1,5 +1,5 @@
 /*!
- * minecraft.js v1.0.2
+ * minecraft.js v1.0.0
  *
  * Copyright (c) 2023 Apedy
  *
@@ -17,24 +17,24 @@ export class World {
 		this.dimension = mc.world.getDimension(dimensionId);
 	}
 	/**
-	 * 複数のコマンドを実行します。
-	 * @param {(mc.Player|mc.Dimension)?} caller 実行元
-	 * @param {...string} syntaxes 構文
+	 * Runs a multiple commands asynchronously.
+	 * @param {string[]} syntaxes
+	 * @param {(mc.Player|mc.Dimension)?} caller
 	 * @returns {Promise<mc.CommandResult>[]}
 	 */
-	runCommands(caller = this.dimension, ...syntaxes) {
+	runCommands(syntaxes, caller = this.dimension) {
 		return syntaxes.map(syntax => caller.runCommandAsync(syntax));
 	}
 	/**
-	 * プレイヤーリストを取得します。
+	 * Returns a customized set of players.
 	 * @param {mc.EntityQueryOptions?} options
 	 * @returns {mc.Player[]}
 	 */
 	getPlayerList(options) {
-		return options ? Array.from(mc.world.getPlayers(options)) : mc.world.getAllPlayers();
+		return options ? mc.world.getPlayers(options) : mc.world.getAllPlayers();
 	}
 	/**
-	 * プレイヤーが手に持っているアイテムを返します。
+	 * Returns the item in the player's selection slot.
 	 * @param {mc.Player} player プレイヤー
 	 * @returns {mc.ItemStack}
 	 */
@@ -42,10 +42,10 @@ export class World {
 		return player.getComponent("minecraft:inventory").container.getItem(player.selectedSlot);
 	}
 	/**
-	 * プレイヤーに指定したアイテムを持たせます。
+	 * Gives items to the player.
 	 * @param {mc.Player} player プレイヤー
 	 * @param {mc.ItemStack} ItemStack
-	 * @param {?string[]} lore 説明
+	 * @param {string[]?} lore 説明
 	 */
 	giveItem(player, ItemStack, lore = "") {
 		ItemStack.setLore(lore);
