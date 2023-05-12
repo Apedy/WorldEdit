@@ -6,16 +6,16 @@
 **マインクラフト統合版に新しい "World Map Editor Addon"が登場!!**
 
 # - ) License
-**WorldEdit++は、[***GNU General Public License v3.0***](https://github.com/Apedy/MinePaint/blob/master/LICENSE) の下で公開されています。**
+**WorldEdit++は、[**GNU General Public License v3.0**](https://github.com/Apedy/MinePaint/blob/master/LICENSE) のもとに公開されています。**
 
 # ! ) Notes
 ### Mojang Studios
-> 1. WorldEdit++ は、Minecraft非公式なものであり、これらの制作に *Mojang Sutudios*社 は関与していません。
-> 2. WorldEdit++ に関する全ての事柄を、*Mojang Sutudios*社 に問い合わせないでください。
+> 1. WorldEdit++ は、Minecraft非公式なものであり、これらの制作に Mojang AB は関与していません。
+> 1. WorldEdit++ に関する全ての事柄を、Mojang AB に問い合わせないでください。
 
 ### EngineHub
-> 1. WorldEdit++ は *Minecraft Java Edition* 上で動作する *WorldEdit* Mod, Plugin に関連したものではなく、これらの制作に *EngineHub*コミュニティ は関与していません。
-> 1. WorldEdit++ に関する全ての事柄を、*EngineHub*コミュニティ に問い合わせないでください。
+> 1. WorldEdit++ は Minecraft Java Edition 上で動作する WorldEdit Mod, Plugin に関連したものではなく、これらの制作に EngineHubコミュニティ は関与していません。
+> 1. WorldEdit++ に関する全ての事柄を、EngineHubコミュニティ に問い合わせないでください。
 
 # ? ) FAQ
 ### Q. アドオンを入れても何も起きません。
