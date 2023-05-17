@@ -9,6 +9,7 @@
 
 import * as mc from '@minecraft/server';
 
+
 export class World {
 	/**
 	 * @param {string} dimensionId
@@ -35,7 +36,7 @@ export class World {
 	}
 	/**
 	 * Returns the item in the player's selection slot.
-	 * @param {mc.Player} player プレイヤー
+	 * @param {mc.Player} player
 	 * @returns {mc.ItemStack}
 	 */
 	hasItem(player) {
@@ -43,13 +44,18 @@ export class World {
 	}
 	/**
 	 * Gives items to the player.
-	 * @param {mc.Player} player プレイヤー
-	 * @param {mc.ItemStack} ItemStack
-	 * @param {string[]?} lore 説明
+	 * @param {mc.Player} player
+	 * @param {mc.ItemType} item
+	 * @param {{ lore?: string[], nameTag?: string }} option
 	 */
-	giveItem(player, ItemStack, lore = "") {
-		ItemStack.setLore(lore);
-		player.getComponent("minecraft:inventory").container.addItem(ItemStack);
+	giveItem(player, itemType, option) {
+		const item = new mc.ItemStack(itemType);
+		const conv = (content = item.nameTag) => content;
+
+		item.setLore(option?.lore);
+		item.nameTag = conv(option?.nameTag);
+
+		player.getComponent("minecraft:inventory").container.addItem(item);
 	}
 	/**
 	 * Apply motion to the player.
