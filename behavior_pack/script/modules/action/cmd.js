@@ -18,11 +18,12 @@
 
 import * as mc from '@minecraft/server';
 import { World } from '../../lib/minecraft';
+
 import { Edit } from '../edit/index';
 
 const mcLib = new World("overworld");
 
-//test
+
 export class Option {
 	/**
 	 * @typedef {Object.<string, string>} state
@@ -61,11 +62,11 @@ class Run {
 	 * @param {Option?} option
 	 */
 	static wand(player, option) {
-		mcLib.giveItem(player, new mc.ItemStack(mc.MinecraftItemTypes.woodenAxe), Edit.toolTag.sel);
-		mcLib.giveItem(player, new mc.ItemStack(mc.MinecraftItemTypes.woodenPickaxe), Edit.toolTag.tp);
+		mcLib.giveItem(player, mc.MinecraftItemTypes.woodenAxe, { lore: Edit.toolTag.sel, nameTag: "§r§l§fAxe§r" });
+		mcLib.giveItem(player, mc.MinecraftItemTypes.woodenPickaxe, {lore: Edit.toolTag.tp, nameTag: "§r§l§fPickaxe§r"});
 
-		player.sendMessage("§l§6>> §fleft click: set pos1§r\n§l§6>> §fright click: set pos2§r");
-		player.sendMessage("§l§6>> §fright click: Teleport to a viewpoint§r");
+		player.sendMessage("\n§l§fAxe:§r\n§l§6>> §fleft click: set pos1§r\n§l§6>> §fright click: set pos2§r");
+		player.sendMessage("\n§l§fPickaxe:§r\n§l§6>> §fright click: Teleport to a viewpoint§r");
 	}
 	/**
 	 * @param {mc.Player} player
