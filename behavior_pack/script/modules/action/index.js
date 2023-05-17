@@ -18,8 +18,8 @@
 
 import * as mc from '@minecraft/server';
 import { World } from '../../lib/minecraft';
-import { Edit } from '../edit/index';
 
+import { Edit } from '../edit/index';
 import * as Cmd from './cmd';
 
 const mcLib = new World("overworld");
