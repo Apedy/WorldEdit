@@ -63,7 +63,7 @@ export class Edit {
 		/** @type mc.BlockPermutation */
 		this.savedBlock;
 
-		mcLib.runCommands(["title @s times 0 2 0"], player);
+		mcLib.runCommands("title @s times 0 2 0", player);
 	}
 	static toolTag = {
 		sel: ["§r§dWorld Edit++§s§e§l§r"],
