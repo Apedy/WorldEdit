@@ -83,7 +83,7 @@ mc.world.events.blockPlace.subscribe(eventData => {
 	const { player, block } = eventData;
 
 	if (Edit.find(player).isBlockSelectionMode) {
-		mcLib.runCommands([`setblock ${block.location.x} ${block.location.y} ${block.location.z} air`]);
+		mcLib.runCommands(`setblock ${block.location.x} ${block.location.y} ${block.location.z} air`);
 		Edit.run.fillBlocks(player, block.permutation);
 
 		if (player.isSneaking) {
