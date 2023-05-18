@@ -63,7 +63,7 @@ mc.world.events.beforeItemUseOn.subscribe(eventData => {
 	if (Edit.hasTool(source, "sel")) {
 		eventData.cancel = true;
 
-		Edit.setPos2(source, source.getBlockFromViewDirection().location);
+		Edit.setPos2(source, eventData.getBlockLocation());
 	}
 	else return;
 });
