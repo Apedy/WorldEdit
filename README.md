@@ -2,7 +2,6 @@
 
 # WorldEdit++ <a href="https://github.com/Apedy/MinePaint/blob/master/LICENSE"><img src="https://flat.badgen.net/badge/license/GPL-3.0/green"></a> <a href="https://github.com/Apedy/WorldEdit/releases/"><img src="https://flat.badgen.net/github/release/Apedy/WorldEdit"></a> <a href="https://github.com/Apedy/WorldEdit/releases/"><img src="https://flat.badgen.net/github/assets-dl/Apedy/MinePaint"></a>
 
-**A new "World Map Editor Addon" for Minecraft Bedrock!!**<br>
 **マインクラフト統合版に新しい "World Map Editor Addon"が登場!!**
 
 # - ) License
