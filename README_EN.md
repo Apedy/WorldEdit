@@ -16,7 +16,7 @@
 > 1. Please do not contact the EngineHub community with any inquiries regarding WorldEdit++.
 
 # ? ) FAQ
-### Q. Nothing happens when I import the addon.
+### Q. Importing add-ons does nothing.
 > Please make sure that the "Beta API" feature is enabled in the world settings.
 <br>
 
