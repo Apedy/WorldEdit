@@ -19,12 +19,12 @@ export class World {
 	}
 	/**
 	 * Runs a multiple commands asynchronously.
-	 * @param {string[]} syntaxes
+	 * @param {string|string[]} syntaxes
 	 * @param {(mc.Player|mc.Dimension)?} caller
-	 * @returns {Promise<mc.CommandResult>[]}
+	 * @returns {Promise<mc.CommandResult>|Promise<mc.CommandResult>[]}
 	 */
 	runCommands(syntaxes, caller = this.dimension) {
-		return syntaxes.map(syntax => caller.runCommandAsync(syntax));
+		return Array.isArray(syntaxes) ? syntaxes.map(syntax => caller.runCommandAsync(syntax)) : caller.runCommandAsync(syntaxes);
 	}
 	/**
 	 * Returns a customized set of players.
