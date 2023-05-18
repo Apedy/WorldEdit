@@ -27,6 +27,6 @@
 <br>
 
 ### Q. Some kind of problem occurs even when following the instructions in the FAQ.
-> If the cause is unknown ➔ [***Issues***(question)](https://github.com/Apedy/WorldEdit/issues/new?assignees=Apedy&labels=Feedback%3A+question&template=%E8%B3%AA%E5%95%8F-ja-.md&title=)
+> If the cause is unknown ➔ [***Issues***(question)](https://github.com/Apedy/WorldEdit/issues/new?assignees=Apedy&labels=Feedback%3A+question&projects=&template=question-en-.md&title=)
 >
-> If the cause is known ➔ [***Issues***(bug report)](https://github.com/Apedy/WorldEdit/issues/new?assignees=Apedy&labels=Category%3A+script%2C+Problem%3A+bug&template=%E3%83%90%E3%82%B0%E5%A0%B1%E5%91%8A-ja-.md&title=)
+> If the cause is known ➔ [***Issues***(bug report)](https://github.com/Apedy/WorldEdit/issues/new?assignees=Apedy&labels=Problem%3A+bug&projects=&template=bug-report-en-.md&title=)
