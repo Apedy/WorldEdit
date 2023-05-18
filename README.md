@@ -1,4 +1,4 @@
-**日本語** / English
+**日本語** / [English](https://github.com/Apedy/WorldEdit/blob/master/README_EN.md)
 
 # WorldEdit++ <a href="https://github.com/Apedy/MinePaint/blob/master/LICENSE"><img src="https://flat.badgen.net/badge/license/GPL-3.0/green"></a> <a href="https://github.com/Apedy/WorldEdit/releases/"><img src="https://flat.badgen.net/github/release/Apedy/WorldEdit"></a> <a href="https://github.com/Apedy/WorldEdit/releases/"><img src="https://flat.badgen.net/github/assets-dl/Apedy/MinePaint"></a>
 
